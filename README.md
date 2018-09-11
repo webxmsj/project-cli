@@ -9,14 +9,32 @@ $ npm install -g project-cli
 ```
 
 ### Usage (`Currently, only Vue type projects are supported`)
+
+#### create project
+---
+
 ```
 $ project create <project-name>
 ```
 
-### Example 
+> Example 
 
 ```
 $ project create myproject
+```
+
+#### get Location (Get the current geographic location)
+---
+
+```
+$ project -l
+```
+
+#### query weather (Get the weather today)
+---
+
+```
+$ project -w 
 ```
 
 ### License
