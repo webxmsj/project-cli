@@ -1,0 +1,65 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+const inquirer = require('inquirer')
+const download = require('download-git-repo')
+
+program
+  .usage('<project-name>')
+  .option('-t, --type','chose a type')
+  .parse(process.argv)
+  .on('--help',() => {
+    console.log('please input your project name')
+    console.log('Example: ')
+    console.log('project create myproject -t vue')
+  })
+  console.log('from project create',program.args)
+
+  // no project name
+  if (program.args.length < 1) {
+    program.help()
+  }
+  var templateName = program.args[0]
+  var typeName;
+  // no project type,to display category selection
+  if (program.args.length == 1) {
+    inquirer.prompt([
+      {
+        type: 'list',
+        name: 'type',
+        message: 'please chose a type',
+        choices: [
+          'Vue',
+          'React',
+          'Angular'
+        ]
+      }
+    ])
+    .then(answers => {
+      // answers.type // Vue | React | Angular
+      typeName = answers.type
+      var url;
+      switch(typeName){
+        case 'Vue':
+          url = 'https://github.com/BryanAdamss/VueTemplate.git'
+          break;
+        case 'React':
+          url = ''
+          break;
+        case 'Angular':
+          url = ''
+          break;
+      }
+      console.log(`start to generate a ${typeName} project`)
+      cloneproject(url,templateName,(data) => {
+        console.log(data ? data : 'success')
+      })
+    });
+  }
+
+
+  function cloneproject(downloadurl, projectpath, callback){
+    download('direct:'+downloadurl, './'+projectpath, {clone:true},function (err) {
+      callback(err)
+      })
+  }

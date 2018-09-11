@@ -1,0 +1,28 @@
+#!/usr/bin/env node
+var program = require('commander');
+var getLocation = require('../utils/location')
+var getWeather = require('../utils/weather')
+program
+  .version(require('../package').version,'-v --version')
+  .usage('<commang> [options]')
+  .command('create','generate a new project from a template')
+  .option('-l, --location', 'get your location')
+  .option('-w, --weather', 'query location weather')
+  .parse(process.argv);
+
+  if (program.location) {
+    getLocation().then(result => {
+      console.log(`Oh you are in ${result}`)
+    })
+  }
+  if (program.weather) {
+    getLocation().then(location => {
+      getWeather(location).then(result => {
+        var todayresult = result['result']['today']
+        console.log(`temperature | weather | wind | week | city | date | dressing_index | dressing_advice | uv_index | confort_index | wash_index | travel_index | exercise_index | drying_index`)
+        console.log()
+        console.log(`${todayresult['temperature']} | ${todayresult['weather']} | ${todayresult['wind']} | ${todayresult['week']} | ${todayresult['city']} | ${todayresult['date']} | ${todayresult['dressing_index']} | ${todayresult['dressing_advice']} | ${todayresult['uv_index']} | ${todayresult['confort_index']} | ${todayresult['wash_index']} | ${todayresult['travel_index']} | ${todayresult['exercise_index']} | ${todayresult['drying_index']}`)
+        // console.log(result)
+      })
+    })
+  }
