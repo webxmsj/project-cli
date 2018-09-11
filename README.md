@@ -8,10 +8,9 @@ Prerequisites: [Node.js](https://nodejs.org/en/) (>=6.x, 8.x preferred), npm ver
 $ npm install -g project-cli
 ```
 
-### Usage (`Currently, only Vue type projects are supported`)
+### Usage (*Currently, only Vue type projects are supported*)
 
 #### create project
----
 
 ```
 $ project create <project-name>
@@ -23,15 +22,13 @@ $ project create <project-name>
 $ project create myproject
 ```
 
-#### get Location (Get the current geographic location)
----
+#### get Location (*Get the current geographic location*)
 
 ```
 $ project -l
 ```
 
-#### query weather (Get the weather today)
----
+#### query weather (*Get the weather today*)
 
 ```
 $ project -w 
