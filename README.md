@@ -1,11 +1,11 @@
-# project-cli
+# project-creater
 Quickly build any framework project.
 
 
 ### Installation
 Prerequisites: [Node.js](https://nodejs.org/en/) (>=6.x, 8.x preferred), npm version 3+ and [Git](https://git-scm.com/).
 ```
-$ npm install -g project-cli
+$ npm install -g project-creater
 ```
 
 ### Usage (*Currently, only Vue type projects are supported*)

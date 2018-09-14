@@ -41,7 +41,7 @@ program
       var url;
       switch(typeName){
         case 'Vue':
-          url = 'https://github.com/BryanAdamss/VueTemplate.git'
+          url = 'https://github.com/webxmsj/project-basetemplate.git'
           break;
         case 'React':
           url = ''

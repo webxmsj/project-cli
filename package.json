@@ -1,5 +1,5 @@
 {
-  "name": "project-cli",
+  "name": "project-creater",
   "version": "0.0.1",
   "description": "Quickly build any framework project.",
   "preferGlobal": true,
