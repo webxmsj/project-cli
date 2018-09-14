@@ -13,8 +13,6 @@ program
     console.log('Example: ')
     console.log('project create myproject -t vue')
   })
-  console.log('from project create',program.args)
-
   // no project name
   if (program.args.length < 1) {
     program.help()
@@ -38,25 +36,28 @@ program
     .then(answers => {
       // answers.type // Vue | React | Angular
       typeName = answers.type
-      var url;
-      switch(typeName){
-        case 'Vue':
-          url = 'https://github.com/webxmsj/project-basetemplate.git'
-          break;
-        case 'React':
-          url = ''
-          break;
-        case 'Angular':
-          url = ''
-          break;
-      }
-      console.log(`start to generate a ${typeName} project`)
-      cloneproject(url,templateName,(data) => {
-        console.log(data ? data : 'success')
+
+      cloneproject('https://github.com/webxmsj/project-basetemplate.git',templateName,(err) => {
+        if (err) {
+          console.log('down template error',error)
+        } else {
+          console.log('template download success')
+          
+          switch(typeName){
+            case 'Vue':
+              require('../cmds/create-vue')()
+              break;
+            case 'React':
+              url = ''
+              break;
+            case 'Angular':
+              url = ''
+              break;
+          }
+        }
       })
     });
   }
-
 
   function cloneproject(downloadurl, projectpath, callback){
     download('direct:'+downloadurl, './'+projectpath, {clone:true},function (err) {
