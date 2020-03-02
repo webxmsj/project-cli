@@ -29,7 +29,7 @@
     "axios": "^0.18.0",
     "commander": "^2.18.0",
     "download-git-repo": "^1.1.0",
-    "inquirer": "^6.2.0",
+    "inquirer": "^7.0.5",
     "minimist": "^1.2.0",
     "ora": "^3.0.0"
   }
